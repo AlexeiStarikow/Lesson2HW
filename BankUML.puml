@@ -1,0 +1,46 @@
+@startuml
+class Bank.Person {
+- String fio
+- String inn
++ String getFio()
++ String getInn()
++ String toString()
+}
+class Bank.Entity {
+- String name
+- String inn
++ String getName()
++ String getInn()
++ String toString()
+}
+class Bank.Program {
++ {static} void main(String[])
+}
+class Bank.Transaction {
+- T from
+- T to
+- double amount
++ void execute()
+}
+class Bank.CreditAccount {
+}
+interface Bank.PersonalData {
+~ String getInn()
+}
+class Bank.DebetAccount {
+}
+abstract class Bank.Account {
+- T data
+- double amount
++ T getData()
++ double getAmount()
++ void setAmount(double)
++ String toString()
+}
+
+
+Bank.PersonalData <|.. Bank.Person
+Bank.PersonalData <|.. Bank.Entity
+Bank.Account <|-- Bank.CreditAccount
+Bank.Account <|-- Bank.DebetAccount
+@enduml
